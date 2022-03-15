@@ -3,10 +3,20 @@ import {View, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 import style from '../config/style';
 import AppText from './AppText';
 
-function AppButton({label, backgroundColor, textColor, ...otherProps}) {
+const {width} = Dimensions.get('window');
+
+function AppButton({
+  label,
+  backgroundColor,
+  textColor,
+  onPress,
+  style,
+  ...otherProps
+}) {
   return (
     <TouchableOpacity
-      style={[styles.container, {backgroundColor: backgroundColor}]}
+      onPress={onPress}
+      style={[styles.container, style, {backgroundColor: backgroundColor}]}
       {...otherProps}>
       <AppText style={[styles.text, {color: textColor}]}>{label}</AppText>
     </TouchableOpacity>
@@ -15,7 +25,7 @@ function AppButton({label, backgroundColor, textColor, ...otherProps}) {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: width - 40,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,

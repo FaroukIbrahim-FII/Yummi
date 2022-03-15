@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>755668438392-tc90ktooaq61443k4hr2jbnp30d1a21h.apps.googleusercontent.com</string>
+	<string>755668438392-8mta85m6m1kbt7k4lulsht3j667nq2pf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.755668438392-tc90ktooaq61443k4hr2jbnp30d1a21h</string>
+	<string>com.googleusercontent.apps.755668438392-8mta85m6m1kbt7k4lulsht3j667nq2pf</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBq26Vdsq4x_vUvtueax-IwTUbPmzfdN68</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.yummi</string>
+	<string>org.reactjs.native.example.Yummi</string>
 	<key>PROJECT_ID</key>
 	<string>yummi-af8eb</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:755668438392:ios:19a5fcbc4b6c5e51b7cc8d</string>
+	<string>1:755668438392:ios:a4b7f0f057ba62a4b7cc8d</string>
 </dict>
 </plist>

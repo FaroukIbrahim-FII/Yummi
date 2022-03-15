@@ -55,13 +55,12 @@ function Slider({style}) {
         showsHorizontalScrollIndicator={false}
         style={styles.scroll}>
         {images.map(item => (
-          <View style={styles.sliderContainer}>
+          <View style={styles.sliderContainer} key={item.id}>
             <Image
               source={{
                 uri: item.image,
               }}
               style={{width: 240, height: 240, marginVertical: 20}}
-              key={item.id}
             />
             <AppText style={styles.primaryText}>{item.header}</AppText>
             <AppText style={styles.secondaryText}>{item.text}</AppText>
@@ -98,12 +97,12 @@ const styles = StyleSheet.create({
   paginationActiveText: {
     color: style.color.primary,
     margin: 3,
-    fontSize: 8,
+    fontSize: 6,
   },
   paginationText: {
     color: '#A7AAB2',
     margin: 3,
-    fontSize: 8,
+    fontSize: 6,
   },
   sliderContainer: {
     justifyContent: 'center',
