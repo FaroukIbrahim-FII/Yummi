@@ -19,7 +19,6 @@ function WelcomeScreen() {
   const modalizeRef = useRef(null);
   const dispatch = useDispatch();
   const sliderData = useSelector(state => state.sliderData);
-  //   const getSliderApi = useApi.getSliderData;
 
   const onOpen = () => {
     if (modalizeRef.current) {
@@ -27,14 +26,11 @@ function WelcomeScreen() {
     }
   };
   const getslider = async () => {
-    // const {data} = await useApi.getSliderData();
     const {data} = await useApi.getSliderData('/slider');
-    // console.log('this is the data: ', data);
     dispatch(GET_SLIDER_DATA(data));
   };
   useEffect(() => {
     getslider();
-    console.log('this is the dataaaaaaa', sliderData);
   }, []);
   return (
     <View style={styles.container}>

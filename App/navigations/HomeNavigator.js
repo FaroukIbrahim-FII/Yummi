@@ -42,7 +42,8 @@ function HomeNavigator(props) {
                   style={{marginHorizontal: 5}}
                 />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Resturant')}>
                 <AppIcon
                   name={'information-outline'}
                   size={30}

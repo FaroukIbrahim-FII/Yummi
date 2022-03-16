@@ -16,6 +16,7 @@ function AppButton({
   iconName,
   iconSize,
   iconColor,
+  fontSize = 17,
   ...otherProps
 }) {
   //   console.log(iconName);
@@ -26,7 +27,9 @@ function AppButton({
       {...otherProps}>
       {iconName && <Icon name="email" size={iconSize} color={iconColor} />}
       {label && (
-        <AppText style={[styles.text, {color: textColor}]}>{label}</AppText>
+        <AppText style={[styles.text, {color: textColor, fontSize: fontSize}]}>
+          {label}
+        </AppText>
       )}
     </TouchableOpacity>
   );
