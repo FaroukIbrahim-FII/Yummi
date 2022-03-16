@@ -6,6 +6,10 @@ import AppButton from './AppButton';
 import AppText from './AppText';
 import LoginField from './LoginField';
 import AppIcon from './AppIcon';
+import DishDetails from './DishDetails';
+import DishIngredients from './DishIngredients';
+import DishInfo from './DishInfo';
+import AddToCartContainer from './AddToCartContainer';
 
 const mainIng = [
   {
@@ -58,130 +62,24 @@ function DetailedDish({item}) {
             />
           </View>
           <View style={{borderBottomColor: '#D0D7DD', borderBottomWidth: 0.5}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flex: 1,
-              }}>
-              <AppText style={styles.header}>{item.text}</AppText>
-              <AppText style={styles.price}>${item.price}</AppText>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginBottom: 12,
-              }}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <AppIcon name={'star'} size={12} color="gold" />
-                <AppText style={styles.iconText}>{item.rate}</AppText>
-              </View>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <AppIcon name={'clock'} size={12} color="#5C616F" />
-                <AppText style={styles.iconText}>{item.time}</AppText>
-              </View>
-            </View>
-            <View>
-              <AppText style={styles.text}>
-                Lorem ipsum et dolor sit amet, and consectetur eadipiscing elit.
-                Ametmo magna the cursus yum dolor praesenta the pulvinar
-                tristique the food.
-              </AppText>
-            </View>
-            <View>
-              <AppText style={styles.mainIng}>Main Ingredients</AppText>
-              <View
-                style={{flexDirection: 'row', marginTop: 14, marginBottom: 20}}>
-                {mainIng.map(item => (
-                  <Image
-                    key={item.id}
-                    source={{uri: item.image}}
-                    style={{width: 36, height: 36, marginRight: 12}}
-                  />
-                ))}
-              </View>
-            </View>
-            <View>
-              <AppText style={styles.mainIng}>Food Informations</AppText>
-              <View
-                style={{flexDirection: 'row', marginTop: 12, marginBottom: 24}}>
-                {foodInfo.map(item => (
-                  <View
-                    key={item.id}
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      borderRadius: 6,
-                      borderColor: '#CDD4DB',
-                      borderWidth: 0.5,
-                      backgroundColor: '#F6F7F8',
-                      paddingHorizontal: 10,
-                      paddingVertical: 6,
-                      marginRight: 8,
-                    }}>
-                    <AppIcon
-                      name={item.icon}
-                      color={item.color}
-                      size={14}
-                      style={{marginRight: 4}}
-                    />
-                    <AppText
-                      style={{
-                        fontSize: 13,
-                        fontWeight: '500',
-                        lineHeight: 18,
-                        letterSpacing: -0.12,
-                        color: '#363D4E',
-                      }}>
-                      {item.data}
-                    </AppText>
-                  </View>
-                ))}
-              </View>
-            </View>
+            <DishDetails
+              text={item.text}
+              price={item.price}
+              rate={item.rate}
+              price={item.price}
+            />
+            <DishIngredients mainIng={mainIng} />
+            <DishInfo foodInfo={foodInfo} />
           </View>
           <View style={{marginVertical: 24}}>
             <LoginField placeholder={'Add Instructions'} />
           </View>
         </View>
-        <View
-          style={
-            Platform.OS === 'ios'
-              ? styles.quantityContainerIos
-              : styles.quantityContainerAndroid
-          }>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-              <AppButton
-                label={'-'}
-                onPress={handleDecrease}
-                style={styles.quantityButton}
-                backgroundColor={'#E8EBEE'}
-                fontSize={25}
-              />
-              <View style={styles.quantity}>
-                <AppText>{quantity}</AppText>
-              </View>
-              <AppButton
-                label={'+'}
-                onPress={handleIncrease}
-                backgroundColor={'#E8EBEE'}
-                style={styles.quantityButton}
-                fontSize={25}
-              />
-            </View>
-            <View style={{flex: 1}}>
-              <AppButton
-                label={'Add to Cart'}
-                style={styles.addToCart}
-                backgroundColor={style.color.primary}
-                textColor={style.color.white}
-              />
-            </View>
-          </View>
-        </View>
+        <AddToCartContainer
+          handleIncrease={handleIncrease}
+          handleDecrease={handleDecrease}
+          quantity={quantity}
+        />
       </ScrollView>
     </View>
   );
@@ -198,80 +96,6 @@ const styles = StyleSheet.create({
   imageContainer: {
     overflow: 'hidden',
     borderRadius: 16,
-  },
-  quantityButton: {
-    width: '30%',
-    borderColor: '#E8EBEE',
-  },
-  addToCart: {
-    width: '100%',
-  },
-  quantity: {
-    // padding: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 40,
-  },
-  header: {
-    fontSize: 20,
-    fontWeight: '700',
-    lineHeight: 24,
-    letterSpacing: -0.16,
-    color: '#040C22',
-    marginVertical: 12,
-    flex: 1.8,
-  },
-  price: {
-    flex: 1,
-    textAlign: 'right',
-    fontSize: 28,
-    fontWeight: '700',
-    lineHeight: 32,
-    letterSpacing: -0.24,
-    color: '#F26333',
-  },
-  iconText: {
-    fontWeight: '400',
-    fontSize: 13,
-    lineHeight: 18,
-    letterSpacing: -0.12,
-    color: '#5C616F',
-    marginRight: 20,
-    marginLeft: 5,
-  },
-  text: {
-    fontSize: 15,
-    fontWeight: '400',
-    lineHeight: 22,
-    letterSpacing: -0.2,
-    color: '#5C616F',
-    marginBottom: 20,
-  },
-  mainIng: {
-    fontSize: 16,
-    fontWeight: '600',
-    lineHeight: 24,
-    letterSpacing: -0.2,
-    color: '#363D4E',
-  },
-  quantityContainerIos: {
-    flex: 1,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-    shadowOpacity: 0.2,
-    shadowRadius: 24,
-    paddingTop: 5,
-    paddingHorizontal: 20,
-  },
-  quantityContainerAndroid: {
-    flex: 1,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-    elevation: 10,
-    paddingTop: 5,
-    paddingHorizontal: 20,
   },
 });
 
