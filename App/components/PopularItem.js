@@ -8,8 +8,6 @@ import {
 } from 'react-native';
 import AppText from './AppText';
 import AppIcon from './AppIcon';
-import {Modalize} from 'react-native-modalize';
-import DetailedDish from './DetailedDish';
 
 function PopularItem({item, onPress}) {
   return (

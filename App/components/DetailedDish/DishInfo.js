@@ -10,7 +10,12 @@ function DishInfo({foodInfo}) {
       <AppText style={styles.mainInfo}>Food Informations</AppText>
       <View style={styles.infoList}>
         {foodInfo.map(item => (
-          <InfoItem icon={item.icon} color={item.color} data={item.data} />
+          <InfoItem
+            key={item.id}
+            icon={item.icon}
+            color={item.color}
+            data={item.data}
+          />
         ))}
       </View>
     </View>

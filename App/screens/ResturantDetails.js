@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
+import ResturantInfo from '../components/ResturantInfo';
 
 function ResturantDetails(props) {
   return (
     <View style={styles.container}>
-      <Text>ResturantDetails</Text>
+      <ResturantInfo />
     </View>
   );
 }

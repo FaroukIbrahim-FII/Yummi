@@ -61,7 +61,29 @@ function HomeNavigator(props) {
         component={FoodDetails}
         options={{presentation: 'modal'}}
       />
-      <Stack.Screen name="Resturant" component={ResturantDetails} />
+      <Stack.Screen
+        name="Resturant"
+        component={ResturantDetails}
+        options={{
+          headerTransparent: true,
+          headerTitle: 'Resturant Info',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            height: 30,
+          },
+          headerBackTitleVisible: false,
+          headerBackImage: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <AppIcon
+                name={'arrow-left'}
+                size={30}
+                color={'black'}
+                style={[styles.back, {height: 35}]}
+              />
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 }

@@ -5,7 +5,7 @@ import AppText from './AppText';
 import MenuItem from './MenuItem';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Modalize} from 'react-native-modalize';
-import DetailedDish from './DetailedDish';
+import DetailedDish from './DetailedDish/DetailedDish';
 
 const {height} = Dimensions.get('window');
 

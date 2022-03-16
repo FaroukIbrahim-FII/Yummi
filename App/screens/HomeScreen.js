@@ -13,7 +13,7 @@ import AppText from '../components/AppText';
 import MenuList from '../components/MenuList';
 import PopularMenuList from '../components/PopularMenuList';
 import {Modalize} from 'react-native-modalize';
-import DetailedDish from '../components/DetailedDish';
+import DetailedDish from '../components/DetailedDish/DetailedDish';
 
 const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('window');
