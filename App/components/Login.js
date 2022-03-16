@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import style from '../config/style';
@@ -6,8 +7,9 @@ import AppText from './AppText';
 import LoginField from './LoginField';
 
 function Login(props) {
+  const {navigate} = useNavigation();
   return (
-    <ScrollView>
+    <ScrollView scrollEventThrottle={14}>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <AppText style={styles.header}>Login</AppText>
@@ -24,6 +26,7 @@ function Login(props) {
           label={'Login'}
           textColor={style.color.white}
           style={styles.button}
+          onPress={() => navigate('home')}
         />
       </View>
     </ScrollView>
@@ -31,7 +34,11 @@ function Login(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   header: {
     color: style.text.color.textPrimary,
     fontSize: style.text.fontSize.textPrimary,

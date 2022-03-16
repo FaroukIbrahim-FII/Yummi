@@ -1,49 +1,45 @@
 import React, {useRef, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  Image,
-  Text,
-  FlatList,
-  Animated,
-} from 'react-native';
+import {View, StyleSheet, Dimensions, Text, Animated} from 'react-native';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
 import Slider from '../components/Slider';
 import style from '../config/style';
 import {Modalize} from 'react-native-modalize';
-import LoginField from '../components/LoginField';
 import Login from '../components/Login';
-import AppModal from '../components/AppModal';
+import {useEffect} from 'react';
+import useApi from '../api/useApi';
+import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {GET_SLIDER_DATA} from '../redux/actions/sliderActions';
 
 const WindowWidth = Dimensions.get('window').width;
 const widowHeight = Dimensions.get('window').height;
 
-const data = [
-  {id: 1, item: 'some text1'},
-  {id: 2, item: 'some text2'},
-  {id: 3, item: 'some text3'},
-  {id: 4, item: 'some text4'},
-];
-
-function WelcomeScreen(props) {
+function WelcomeScreen() {
   const modalizeRef = useRef(null);
+  const dispatch = useDispatch();
+  const sliderData = useSelector(state => state.sliderData);
+  //   const getSliderApi = useApi.getSliderData;
 
   const onOpen = () => {
     if (modalizeRef.current) {
       modalizeRef.current.open();
     }
   };
-  const renderItem = item => (
-    <View style={styles.container}>
-      <Text>{item.item.item}</Text>
-    </View>
-  );
+  const getslider = async () => {
+    // const {data} = await useApi.getSliderData();
+    const {data} = await useApi.getSliderData('/slider');
+    // console.log('this is the data: ', data);
+    dispatch(GET_SLIDER_DATA(data));
+  };
+  useEffect(() => {
+    getslider();
+    console.log('this is the dataaaaaaa', sliderData);
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.slider}>
-        <Slider />
+        <Slider sliderData={sliderData} />
       </View>
       <View style={styles.buttonContainer}>
         <AppButton
@@ -86,16 +82,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  rootStyle: {
-    backgroundColor: '#00000020',
-  },
-  modal: {
-    padding: 20,
-    alignSelf: 'center',
-    width: WindowWidth,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
   },
   slider: {
     alignItems: 'center',

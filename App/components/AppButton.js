@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from '../config/style';
+import AppIcon from './AppIcon';
 import AppText from './AppText';
 
 const {width} = Dimensions.get('window');
@@ -11,14 +13,21 @@ function AppButton({
   textColor,
   onPress,
   style,
+  iconName,
+  iconSize,
+  iconColor,
   ...otherProps
 }) {
+  //   console.log(iconName);
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[styles.container, style, {backgroundColor: backgroundColor}]}
       {...otherProps}>
-      <AppText style={[styles.text, {color: textColor}]}>{label}</AppText>
+      {iconName && <Icon name="email" size={iconSize} color={iconColor} />}
+      {label && (
+        <AppText style={[styles.text, {color: textColor}]}>{label}</AppText>
+      )}
     </TouchableOpacity>
   );
 }

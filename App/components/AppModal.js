@@ -7,7 +7,7 @@ const WindowWidth = Dimensions.get('window').width;
 const widowHeight = Dimensions.get('window').height;
 
 function AppModal({ref}) {
-  console.log(ref);
+  // console.log(ref);
   return (
     <Modalize
       // ref={ref}

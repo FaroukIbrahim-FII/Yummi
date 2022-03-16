@@ -10,33 +10,9 @@ import {
 import AppText from './AppText';
 import style from '../config/style';
 
-const images = [
-  {
-    id: 1,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647253254/Order_Food_Ilustration_ulpe9h.png',
-    header: 'Order Food Around You',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae tincidunt semper',
-  },
-  {
-    id: 2,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647253254/Fast_Delivery_Illustration_noqvbz.png',
-    header: 'Fast Delivery',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae tincidunt semper',
-  },
-  {
-    id: 3,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647253254/Safe_Delivery_Illustration_iuqgvr.png',
-    header: 'Safe Delivery',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae tincidunt semper',
-  },
-];
-
 const {width} = Dimensions.get('window');
 
-function Slider({style}) {
+function Slider({style, sliderData}) {
   const [active, setActive] = useState(0);
   const imageChanged = ({nativeEvent}) => {
     const slide = Math.ceil(
@@ -46,15 +22,17 @@ function Slider({style}) {
       setActive(slide);
     }
   };
+  if (!sliderData) return null;
   return (
     <View style={[styles.container, style]}>
       <ScrollView
         horizontal
         pagingEnabled
+        scrollEventThrottle={14}
         onScroll={imageChanged}
         showsHorizontalScrollIndicator={false}
         style={styles.scroll}>
-        {images.map(item => (
+        {sliderData.map(item => (
           <View style={styles.sliderContainer} key={item.id}>
             <Image
               source={{
@@ -68,7 +46,7 @@ function Slider({style}) {
         ))}
       </ScrollView>
       <View style={styles.dots}>
-        {images.map((i, k) => (
+        {sliderData.map((i, k) => (
           <Text
             key={k}
             style={
@@ -85,7 +63,6 @@ function Slider({style}) {
 const styles = StyleSheet.create({
   container: {
     width: width,
-    // flexDirection: 'row',
   },
   scroll: {
     width,
