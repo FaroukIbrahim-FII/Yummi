@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import AppText from './AppText';
+import AppText from '../AppText';
 
 function DishIngredients({mainIng}) {
   return (

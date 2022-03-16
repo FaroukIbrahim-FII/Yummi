@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import AppButton from './AppButton';
-import AppText from './AppText';
-import style from '../config/style';
+import {View, StyleSheet, Platform} from 'react-native';
+import AppButton from '../AppButton';
+import AppText from '../AppText';
+import style from '../../config/style';
 
 function AddToCartContainer({handleDecrease, handleIncrease, quantity}) {
   return (

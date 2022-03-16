@@ -1,11 +1,7 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, Image, Platform} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import style from '../config/style';
-import AppButton from './AppButton';
-import AppText from './AppText';
-import LoginField from './LoginField';
-import AppIcon from './AppIcon';
+import LoginField from '../LoginField';
 import DishDetails from './DishDetails';
 import DishIngredients from './DishIngredients';
 import DishInfo from './DishInfo';

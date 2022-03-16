@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import DetailedDish from '../components/DetailedDish';
+import DetailedDish from '../components/DetailedDish/DetailedDish';
 
 function FoodDetails(props) {
   return (
