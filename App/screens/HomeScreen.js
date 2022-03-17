@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -6,88 +6,14 @@ import {
   Dimensions,
   Animated,
   ScrollView,
-  FlatList,
 } from 'react-native';
-import AppIcon from '../components/AppIcon';
-import AppText from '../components/AppText';
 import MenuList from '../components/MenuList';
 import PopularMenuList from '../components/PopularMenuList';
 import {Modalize} from 'react-native-modalize';
 import DetailedDish from '../components/DetailedDish/DetailedDish';
 import useApi from '../hooks/useApi';
-import popularListReducer from '../redux/reducers/popularMenuReducer';
 
-const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('window');
-
-const data = [
-  {
-    id: 1,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647359228/Image_or0skt.png',
-    text: 'Mushroom & Nori Noodle',
-    time: '35 min',
-    rate: 4.3,
-    price: 11,
-  },
-  {
-    id: 2,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647359227/Image_somqh2.png',
-    text: 'Authentic Japanese Ramen',
-    time: '30 min',
-    rate: 4.1,
-    price: 12,
-  },
-  {
-    id: 3,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647359228/Image_bdssih.png',
-    text: 'Chicken Peanut Noodle',
-    time: '25 min',
-    rate: 4.5,
-    price: 8,
-  },
-  {
-    id: 4,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647359227/Image_b2hahw.png',
-    text: 'Authentic Japanese Ramen',
-    time: '20 min',
-    rate: 4.8,
-    price: 10,
-  },
-];
-
-const menuData = [
-  {
-    id: 1,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647417511/Image_iqvtok.png',
-    price: 7,
-    title: 'Original Ramen',
-    time: '20 min',
-    rate: 4.5,
-  },
-  {
-    id: 2,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647417510/Image_rlt5ga.png',
-    price: 10,
-    title: 'Noodle with Chicken Curry Soup',
-    time: '30 min',
-    rate: 4.5,
-  },
-  {
-    id: 3,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647417510/Image_umsrcr.png',
-    price: 8,
-    title: 'Kwiteau with Chicken Slices',
-    time: '25 min',
-    rate: 4.5,
-  },
-];
 
 const selectionItems = [
   {id: 1, name: 'All Menu'},
@@ -98,8 +24,7 @@ const selectionItems = [
 
 function HomeScreen({navigation}) {
   const [selectedItem, setSetlectedItem] = useState(null);
-  //   const [popularList, setPopularList] = useState(null);
-  //   const [menuList, setMenuList] = useState(null);
+
   const modalizeRef = useRef(null);
 
   const api = useApi();
@@ -113,11 +38,6 @@ function HomeScreen({navigation}) {
     }
   };
 
-  useEffect(() => {
-    // setPopularList(popularList);
-    // setMenuList(menuList);
-    console.log(menuList);
-  });
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -133,7 +53,11 @@ function HomeScreen({navigation}) {
         <ScrollView>
           <View>
             <PopularMenuList data={popularList} onPress={onOpen} />
-            <MenuList list={menuList} selectionItems={selectionItems} />
+            <MenuList
+              list={menuList}
+              selectionItems={selectionItems}
+              onPress={onOpen}
+            />
           </View>
         </ScrollView>
       </View>

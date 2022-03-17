@@ -1,13 +1,7 @@
-import React, {useRef} from 'react';
-import {View, StyleSheet, FlatList, Animated, Dimensions} from 'react-native';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 import PopularItem from './PopularItem';
 import AppText from './AppText';
-import MenuItem from './MenuItem';
-import {ScrollView} from 'react-native-gesture-handler';
-import {Modalize} from 'react-native-modalize';
-import DetailedDish from './DetailedDish/DetailedDish';
-
-const {height} = Dimensions.get('window');
 
 function PopularMenuList({data, onPress}) {
   return (
@@ -27,7 +21,6 @@ function PopularMenuList({data, onPress}) {
 }
 
 const styles = StyleSheet.create({
-  //   container: {flex: 1},
   list: {
     marginHorizontal: 5,
   },

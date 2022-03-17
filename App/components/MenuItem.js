@@ -1,19 +1,11 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import AppText from './AppText';
 import AppIcon from './AppIcon';
 
-const {width} = Dimensions.get('window');
-
-function MenuItem({item}) {
+function MenuItem({item, onPress}) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={{flex: 1}}>
         <Image
           source={{uri: item.image}}

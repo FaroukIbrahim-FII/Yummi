@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TextInput, Dimensions, Text} from 'react-native';
-import AppText from './AppText';
 
 const {width} = Dimensions.get('window');
 

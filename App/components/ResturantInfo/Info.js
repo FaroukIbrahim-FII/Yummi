@@ -5,52 +5,6 @@ import AppText from '../AppText';
 import OperationalHours from './OperationalHours';
 import ResturantDetails from './ResturantDetails';
 
-const hours = [
-  {
-    id: 1,
-    day: 'Monday',
-    startHour: '10:00',
-    finishHour: '19:00',
-    dayOff: false,
-  },
-  {
-    id: 2,
-    day: 'Tuesday',
-    startHour: '10:00',
-    finishHour: '19:00',
-    dayOff: false,
-  },
-  {
-    id: 3,
-    day: 'Wednesday',
-    startHour: '10:00',
-    finishHour: '19:00',
-    dayOff: false,
-  },
-  {
-    id: 4,
-    day: 'Thursday',
-    startHour: '10:00',
-    finishHour: '19:00',
-    dayOff: false,
-  },
-  {
-    id: 5,
-    day: 'Friday',
-    startHour: '10:00',
-    finishHour: '19:00',
-    dayOff: false,
-  },
-  {
-    id: 6,
-    day: 'Saturday',
-    startHour: '10:00',
-    finishHour: '19:00',
-    dayOff: false,
-  },
-  {id: 7, day: 'Sunday', dayOff: true},
-];
-
 function Info({details}) {
   return (
     <View style={styles.container}>

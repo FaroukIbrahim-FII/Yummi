@@ -6,11 +6,6 @@ import Slider from '../components/Slider';
 import style from '../config/style';
 import {Modalize} from 'react-native-modalize';
 import Login from '../components/Login';
-import {useEffect} from 'react';
-// // import useApi from '../api/data';
-// import axios from 'axios';
-// import {useDispatch} from 'react-redux';
-// import {GET_SLIDER_DATA} from '../redux/actions/sliderActions';
 import useApi from '../hooks/useApi';
 
 const WindowWidth = Dimensions.get('window').width;
@@ -27,10 +22,6 @@ function WelcomeScreen() {
       modalizeRef.current.open();
     }
   };
-
-  useEffect(() => {
-    // console.log('this is the data: ', api.sliderData);
-  });
 
   return (
     <View style={styles.container}>

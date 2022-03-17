@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import ResturantInfo from '../components/ResturantInfo';
 
 function ResturantDetails(props) {

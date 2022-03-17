@@ -1,11 +1,5 @@
-import React, {useRef} from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Animated,
-} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import AppText from './AppText';
 import AppIcon from './AppIcon';
 

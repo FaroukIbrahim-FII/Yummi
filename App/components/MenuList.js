@@ -1,18 +1,20 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 import AppText from './AppText';
 import MenuItem from './MenuItem';
 import MenuSelectList from './MenuSelectList';
+import useApi from '../hooks/useApi';
 
-function MenuList({list, selectionItems}) {
+function MenuList({list, selectionItems, onPress}) {
+  const api = useApi();
+  const resturantDetails = api.resturantDetails;
   return (
     <View style={styles.container}>
-      <AppText style={styles.header}>Right From Oven’s Menu</AppText>
+      <AppText style={styles.header}>{resturantDetails.name}’s Menu</AppText>
       <MenuSelectList selectionItems={selectionItems} />
       <View style={{flexWrap: 'wrap'}}>
         {list.map(item => (
-          <MenuItem key={item.id} item={item} />
+          <MenuItem key={item.id} item={item} onPress={onPress} />
         ))}
       </View>
     </View>
