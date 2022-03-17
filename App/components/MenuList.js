@@ -14,7 +14,7 @@ function MenuList({list, selectionItems, onPress}) {
       <MenuSelectList selectionItems={selectionItems} />
       <View style={{flexWrap: 'wrap'}}>
         {list.map(item => (
-          <MenuItem key={item.id} item={item} onPress={onPress} />
+          <MenuItem key={item.id} item={item} onPress={() => onPress(item)} />
         ))}
       </View>
     </View>

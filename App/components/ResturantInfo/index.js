@@ -15,7 +15,7 @@ const {width} = Dimensions.get('window');
 function index(props) {
   const api = useApi();
   const resturantDetails = api.resturantDetails;
-  console.log('resturant details: ', resturantDetails.map);
+  //   console.log('resturant details: ', resturantDetails.map);
 
   return (
     <View style={styles.container}>

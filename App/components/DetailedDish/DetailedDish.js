@@ -47,8 +47,6 @@ function DetailedDish({item}) {
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => setQuantity(quantity <= 1 ? 1 : quantity - 1);
 
-  console.log('the detailed item is: ', item);
-
   return (
     <View style={styles.container}>
       <ScrollView>

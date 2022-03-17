@@ -54,7 +54,7 @@ function useApitwo(props) {
   const popularList = useSelector(state => state.popularList);
   const menuList = useSelector(state => state.menuList);
   const resturantDetails = useSelector(state => state.resturantDetails);
-  console.log('the data after dispatching', sliderData);
+  // console.log('the data after dispatching', sliderData);
 
   return {sliderData, popularList, menuList, resturantDetails};
 }
