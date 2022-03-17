@@ -8,21 +8,26 @@ import {
 } from 'react-native';
 import AppText from '../AppText';
 import Info from './Info';
+import useApi from '../../hooks/useApi';
 
 const {width} = Dimensions.get('window');
 
 function index(props) {
+  const api = useApi();
+  const resturantDetails = api.resturantDetails;
+  console.log('resturant details: ', resturantDetails.map);
+
   return (
     <View style={styles.container}>
       <ImageBackground
         source={{
-          uri: 'https://res.cloudinary.com/faroukibrahim/image/upload/v1647440204/Map_lcxryp.png',
+          uri: resturantDetails['map'],
         }}
         style={{width: width, height: 744, flex: 1}}>
         <View style={{flex: 0.8, backgroundColor: 'white'}}></View>
         <View style={{flex: 2}}></View>
         <View style={styles.infoContainer}>
-          <Info />
+          <Info details={resturantDetails} />
         </View>
       </ImageBackground>
     </View>

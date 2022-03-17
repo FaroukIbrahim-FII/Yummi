@@ -1,7 +1,7 @@
 import {create} from 'apisauce';
 
 const apiClient = create({
-  baseURL: 'https://f75f909c-d5e1-4ea8-9e18-19bb3654cdf6.mock.pstmn.io',
+  baseURL: 'https://0d27ead0-a543-4e8c-bc48-c712aaacfe81.mock.pstmn.io',
 });
 
 export default apiClient;

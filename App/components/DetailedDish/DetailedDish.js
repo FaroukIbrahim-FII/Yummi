@@ -11,7 +11,7 @@ const mainIng = [
   {
     id: 1,
     image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647434009/Image_36x36-2_l8dsii.png',
+      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647433747/Image_36x36-3_tjgqol.png',
   },
   {
     id: 2,
@@ -47,6 +47,8 @@ function DetailedDish({item}) {
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => setQuantity(quantity <= 1 ? 1 : quantity - 1);
 
+  console.log('the detailed item is: ', item);
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -64,8 +66,8 @@ function DetailedDish({item}) {
               rate={item.rate}
               price={item.price}
             />
-            <DishIngredients mainIng={mainIng} />
-            <DishInfo foodInfo={foodInfo} />
+            <DishIngredients mainIng={item['main ingredients']} />
+            <DishInfo foodInfo={item['food info']} />
           </View>
           <View style={{marginVertical: 24}}>
             <LoginField placeholder={'Add Instructions'} />

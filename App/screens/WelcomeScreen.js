@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import {View, StyleSheet, Dimensions, Text, Animated} from 'react-native';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
@@ -7,35 +7,39 @@ import style from '../config/style';
 import {Modalize} from 'react-native-modalize';
 import Login from '../components/Login';
 import {useEffect} from 'react';
-import useApi from '../api/useApi';
-import axios from 'axios';
-import {useDispatch, useSelector} from 'react-redux';
-import {GET_SLIDER_DATA} from '../redux/actions/sliderActions';
+// // import useApi from '../api/data';
+// import axios from 'axios';
+// import {useDispatch} from 'react-redux';
+// import {GET_SLIDER_DATA} from '../redux/actions/sliderActions';
+import useApi from '../hooks/useApi';
 
 const WindowWidth = Dimensions.get('window').width;
 const widowHeight = Dimensions.get('window').height;
 
 function WelcomeScreen() {
   const modalizeRef = useRef(null);
-  const dispatch = useDispatch();
-  const sliderData = useSelector(state => state.sliderData);
+
+  const api = useApi();
+  let sliderData = api.sliderData;
 
   const onOpen = () => {
     if (modalizeRef.current) {
       modalizeRef.current.open();
     }
   };
-  const getslider = async () => {
-    const {data} = await useApi.getSliderData('/slider');
-    dispatch(GET_SLIDER_DATA(data));
-  };
+
   useEffect(() => {
-    getslider();
-  }, []);
+    // console.log('this is the data: ', api.sliderData);
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.slider}>
-        <Slider sliderData={sliderData} />
+        {sliderData !== [] || !sliderData ? (
+          <Slider sliderData={sliderData} />
+        ) : (
+          <Text>no data here</Text>
+        )}
       </View>
       <View style={styles.buttonContainer}>
         <AppButton

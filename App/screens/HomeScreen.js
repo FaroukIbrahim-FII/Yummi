@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -14,6 +14,8 @@ import MenuList from '../components/MenuList';
 import PopularMenuList from '../components/PopularMenuList';
 import {Modalize} from 'react-native-modalize';
 import DetailedDish from '../components/DetailedDish/DetailedDish';
+import useApi from '../hooks/useApi';
+import popularListReducer from '../redux/reducers/popularMenuReducer';
 
 const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('window');
@@ -96,7 +98,13 @@ const selectionItems = [
 
 function HomeScreen({navigation}) {
   const [selectedItem, setSetlectedItem] = useState(null);
+  //   const [popularList, setPopularList] = useState(null);
+  //   const [menuList, setMenuList] = useState(null);
   const modalizeRef = useRef(null);
+
+  const api = useApi();
+  const popularList = api.popularList;
+  const menuList = api.menuList;
 
   const onOpen = item => {
     if (modalizeRef.current) {
@@ -104,6 +112,12 @@ function HomeScreen({navigation}) {
       setSetlectedItem(item);
     }
   };
+
+  useEffect(() => {
+    // setPopularList(popularList);
+    // setMenuList(menuList);
+    console.log(menuList);
+  });
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -118,8 +132,8 @@ function HomeScreen({navigation}) {
       <View style={styles.listContainer}>
         <ScrollView>
           <View>
-            <PopularMenuList data={data} onPress={onOpen} />
-            <MenuList list={menuData} selectionItems={selectionItems} />
+            <PopularMenuList data={popularList} onPress={onOpen} />
+            <MenuList list={menuList} selectionItems={selectionItems} />
           </View>
         </ScrollView>
       </View>

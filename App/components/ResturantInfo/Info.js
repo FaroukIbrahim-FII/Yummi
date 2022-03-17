@@ -51,16 +51,23 @@ const hours = [
   {id: 7, day: 'Sunday', dayOff: true},
 ];
 
-function Info(props) {
+function Info({details}) {
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <AppText style={styles.header}>Right From Oven</AppText>
+          <AppText style={styles.header}>{details.name}</AppText>
           <AppIcon name={'home-floor-1'} size={22} color={'#0BB8E4'} />
         </View>
-        <ResturantDetails />
-        <OperationalHours hours={hours} />
+        <ResturantDetails
+          rate={details.rate}
+          rateNum={details.rateNum}
+          type={details.type}
+          priceRange={details.priceRange}
+          about={details.about}
+          address={details.address}
+        />
+        <OperationalHours hours={details.hours} />
       </ScrollView>
     </View>
   );

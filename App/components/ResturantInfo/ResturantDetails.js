@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import AppIcon from '../AppIcon';
 import AppText from '../AppText';
 
-function ResturantDetails(props) {
+function ResturantDetails({rate, rateNum, type, priceRange, about, address}) {
   return (
     <View style={styles.container}>
       <View
@@ -15,26 +15,20 @@ function ResturantDetails(props) {
             color="gold"
             // style={{marginRight: 3}}
           />
-          <AppText style={styles.rate}>4.5</AppText>
-          <AppText style={styles.rateNum}>(678)</AppText>
+          <AppText style={styles.rate}>{rate}</AppText>
+          <AppText style={styles.rateNum}>({rateNum})</AppText>
         </View>
         <View style={{flexDirection: 'row'}}>
-          <AppText style={styles.type}>Bread, Cake</AppText>
-          <AppText style={styles.priceRange}>$$</AppText>
+          <AppText style={styles.type}>{type}</AppText>
+          <AppText style={styles.priceRange}>{'$'.repeat(priceRange)}</AppText>
         </View>
       </View>
       <View style={{marginBottom: 20}}>
-        <AppText style={styles.text}>
-          Lorem ipsum et dolor sit amet, and consectetur eadipiscing elit.
-          Ametmo magna the cursus yum dolor praesenta the pulvinar tristique the
-          food.
-        </AppText>
+        <AppText style={styles.text}>{about}</AppText>
       </View>
       <View style={styles.addressContainer}>
         <AppText style={styles.subHeader}>Detail Address</AppText>
-        <AppText style={styles.text}>
-          3891 Ranchview Dr. Richardson, California 62639
-        </AppText>
+        <AppText style={styles.text}>{address}</AppText>
       </View>
     </View>
   );
