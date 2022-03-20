@@ -34,8 +34,16 @@ const App = () => {
 
   const handleBioAuth = async () => {
     try {
-      const result = await LocalAuthentication.authenticateAsync();
-      setAuthenticated(result.success);
+      let hasHardware = await LocalAuthentication.hasHardwareAsync();
+      if (hasHardware) {
+        const enrolled = await LocalAuthentication.getEnrolledLevelAsync();
+        if (enrolled === 2 && LocalAuthentication.isEnrolledAsync) {
+          const result = await LocalAuthentication.authenticateAsync();
+          setAuthenticated(result.success);
+        } else {
+          setAuthenticated(true);
+        }
+      }
     } catch (error) {
       console.log('Error: ', error);
     }
