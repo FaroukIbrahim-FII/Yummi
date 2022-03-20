@@ -6,106 +6,83 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {StyleSheet, AppState} from 'react-native';
+import 'react-native-gesture-handler';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {LogBox} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import AuthNavigation from './App/navigations/AuthNavigation';
+import defaultTheme from './App/navigations/navigationTheme';
+import {Provider} from 'react-redux';
+import {store} from './App/redux/store';
+import RNBootSplash from 'react-native-bootsplash';
+import * as LocalAuthentication from 'expo-local-authentication';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+]);
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      RNBootSplash.hide();
+    }, 1000);
+  }, []);
+  const [authenticated, setAuthenticated] = useState(false);
+  const appState = useRef(AppState.currentState);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const handleBioAuth = async () => {
+    try {
+      let hasHardware = await LocalAuthentication.hasHardwareAsync();
+      if (hasHardware) {
+        const enrolled = await LocalAuthentication.getEnrolledLevelAsync();
+        if (enrolled === 2 && LocalAuthentication.isEnrolledAsync) {
+          const result = await LocalAuthentication.authenticateAsync();
+          setAuthenticated(result.success);
+        } else {
+          setAuthenticated(true);
+        }
+      }
+    } catch (error) {
+      console.log('Error: ', error);
+    }
   };
 
+  const _handleAppStateChange = nextState => {
+    if (appState.current.match(/background/) && nextState === 'active') {
+      setAuthenticated(false);
+      handleBioAuth();
+    }
+    appState.current = nextState;
+
+    // console.log('app state is: ', appState.current);
+  };
+
+  useEffect(() => {
+    AppState.addEventListener('change', _handleAppStateChange);
+    handleBioAuth();
+    return () => {
+      AppState.addEventListener('change', _handleAppStateChange).remove();
+    };
+  }, []);
+
+  if (!authenticated) return null;
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Provider store={store}>
+      <NavigationContainer theme={defaultTheme}>
+        <AuthNavigation />
+      </NavigationContainer>
+    </Provider>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
