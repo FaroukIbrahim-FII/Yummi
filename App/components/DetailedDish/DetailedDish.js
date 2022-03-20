@@ -7,40 +7,6 @@ import DishIngredients from './DishIngredients';
 import DishInfo from './DishInfo';
 import AddToCartContainer from './AddToCartContainer';
 
-const mainIng = [
-  {
-    id: 1,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647433747/Image_36x36-3_tjgqol.png',
-  },
-  {
-    id: 2,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647433747/Image_36x36_knr5jd.png',
-  },
-  {
-    id: 3,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647433747/Image_36x36-5_jqhled.png',
-  },
-  {
-    id: 4,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647433747/Image_36x36-4_vjmwcp.png',
-  },
-  {
-    id: 5,
-    image:
-      'https://res.cloudinary.com/faroukibrahim/image/upload/v1647433747/Image_36x36-2_fflacy.png',
-  },
-];
-
-const foodInfo = [
-  {id: 1, data: '1990 kal', icon: 'fire', color: '#F55053'},
-  {id: 2, data: 'Organic', icon: 'sprout', color: '#00B167'},
-  {id: 3, data: 'Free Gluten', icon: 'barley-off', color: '#F26333'},
-];
-
 function DetailedDish({item}) {
   const [quantity, setQuantity] = useState(1);
 

@@ -7,6 +7,7 @@ import style from '../config/style';
 import {Modalize} from 'react-native-modalize';
 import Login from '../components/Login';
 import useApi from '../hooks/useApi';
+import EmptySlider from '../components/EmptySlider';
 
 const WindowWidth = Dimensions.get('window').width;
 const widowHeight = Dimensions.get('window').height;
@@ -17,6 +18,8 @@ function WelcomeScreen() {
   const api = useApi();
   let sliderData = api.sliderData;
 
+  console.log('this is the slider Data: ', sliderData == []);
+
   const onOpen = () => {
     if (modalizeRef.current) {
       modalizeRef.current.open();
@@ -26,10 +29,10 @@ function WelcomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.slider}>
-        {sliderData !== [] || !sliderData ? (
+        {sliderData.length !== 0 ? (
           <Slider sliderData={sliderData} />
         ) : (
-          <Text>no data here</Text>
+          <EmptySlider />
         )}
       </View>
       <View style={styles.buttonContainer}>

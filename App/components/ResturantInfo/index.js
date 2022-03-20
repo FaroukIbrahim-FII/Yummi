@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  Dimensions,
-  ImageBackground,
-} from 'react-native';
+import {View, StyleSheet, Dimensions, ImageBackground} from 'react-native';
 import AppText from '../AppText';
 import Info from './Info';
 import useApi from '../../hooks/useApi';

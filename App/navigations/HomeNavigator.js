@@ -64,7 +64,7 @@ function HomeNavigator(props) {
       <Stack.Screen
         name="Resturant"
         component={ResturantDetails}
-        options={{
+        options={({navigation}) => ({
           headerTransparent: true,
           headerTitle: 'Resturant Info',
           headerTitleAlign: 'center',
@@ -82,7 +82,7 @@ function HomeNavigator(props) {
               />
             </TouchableOpacity>
           ),
-        }}
+        })}
       />
     </Stack.Navigator>
   );

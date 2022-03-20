@@ -6,6 +6,7 @@ import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import android.os.Bundle;
+import com.zoontek.rnbootsplash.RNBootSplash;
 
 public class MainActivity extends ReactActivity {
 
@@ -28,6 +29,18 @@ public class MainActivity extends ReactActivity {
       protected ReactRootView createRootView() {
        return new RNGestureHandlerEnabledRootView(MainActivity.this);
       }
+      @Override
+        protected void loadApp(String appKey) {
+          RNBootSplash.init(MainActivity.this); // <- initialize the splash screen
+          super.loadApp(appKey);
+      }
+      // @Override
+      //     protected void onCreate(Bundle savedInstanceState) {
+      //       super.onCreate(savedInstanceState);
+      //       RNBootSplash.init(R.drawable.bootsplash, MainActivity.this); // <- initialize the splash screen
+      //     }
     };
   }
+
+  
 }

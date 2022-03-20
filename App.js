@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import {StyleSheet, Text} from 'react-native';
 import Logo from './App/assets/logo.svg';
@@ -25,12 +25,19 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppIcon from './App/components/AppIcon';
 import {Provider} from 'react-redux';
 import {store} from './App/redux/store';
+import RNBootSplash from 'react-native-bootsplash';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
 
 const App = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      RNBootSplash.hide();
+    }, 1000);
+  }, []);
+
   return (
     <Provider store={store}>
       <NavigationContainer theme={defaultTheme}>
