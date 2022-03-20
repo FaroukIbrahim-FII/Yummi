@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		52554C6BB35634506AF36679 /* libPods-Yummi-YummiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 207039E8C553C385CA295CD1 /* libPods-Yummi-YummiTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B0E20DDD1CCCAAD68BEDF19B /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579907747CCCB7417FA1C93D /* ExpoModulesProvider.swift */; };
+		B46AFDA8974E8CFC8A64DFE3 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB2D4A75942FBE9C11BF97D /* ExpoModulesProvider.swift */; };
 		D083361927E38AC8002A4A55 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D083361827E38AC8002A4A55 /* BootSplash.storyboard */; };
 		D0E444D027DF829F0029D66D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0E444CF27DF829F0029D66D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -40,9 +42,11 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Yummi/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Yummi/main.m; sourceTree = "<group>"; };
 		207039E8C553C385CA295CD1 /* libPods-Yummi-YummiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yummi-YummiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		579907747CCCB7417FA1C93D /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Yummi-YummiTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		635C98B28485A28AA76E1BC9 /* Pods-Yummi-YummiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yummi-YummiTests.debug.xcconfig"; path = "Target Support Files/Pods-Yummi-YummiTests/Pods-Yummi-YummiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DFED7B191340C1E3EB83ADF /* Pods-Yummi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yummi.release.xcconfig"; path = "Target Support Files/Pods-Yummi/Pods-Yummi.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Yummi/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8EB2D4A75942FBE9C11BF97D /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Yummi/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		9EB5F0E631BEF3DDF1BFD94C /* libPods-Yummi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yummi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA857CF82675F2B9FB7FBBE /* Pods-Yummi-YummiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yummi-YummiTests.release.xcconfig"; path = "Target Support Files/Pods-Yummi-YummiTests/Pods-Yummi-YummiTests.release.xcconfig"; sourceTree = "<group>"; };
 		D083361827E38AC8002A4A55 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = Yummi/BootSplash.storyboard; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 			name = Yummi;
 			sourceTree = "<group>";
 		};
+		1B3C0BF798E0B7FDC913EA79 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				9F68B49BC8FB0D553063606A /* Yummi */,
+				A61EFD15DF8975D5CB43C53E /* YummiTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +152,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				69BBCAA2260AD152885ECFC8 /* Pods */,
+				1B3C0BF798E0B7FDC913EA79 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -152,6 +166,22 @@
 				00E356EE1AD99517003FC87E /* YummiTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9F68B49BC8FB0D553063606A /* Yummi */ = {
+			isa = PBXGroup;
+			children = (
+				8EB2D4A75942FBE9C11BF97D /* ExpoModulesProvider.swift */,
+			);
+			name = Yummi;
+			sourceTree = "<group>";
+		};
+		A61EFD15DF8975D5CB43C53E /* YummiTests */ = {
+			isa = PBXGroup;
+			children = (
+				579907747CCCB7417FA1C93D /* ExpoModulesProvider.swift */,
+			);
+			name = YummiTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* YummiTests.m in Sources */,
+				B0E20DDD1CCCAAD68BEDF19B /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +468,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				B46AFDA8974E8CFC8A64DFE3 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +493,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = YummiTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -485,7 +517,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = YummiTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -601,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -659,7 +691,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",

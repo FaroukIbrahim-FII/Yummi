@@ -18,7 +18,7 @@ function WelcomeScreen() {
   const api = useApi();
   let sliderData = api.sliderData;
 
-  console.log('this is the slider Data: ', sliderData == []);
+  //   console.log('this is the slider Data: ', sliderData == []);
 
   const onOpen = () => {
     if (modalizeRef.current) {
